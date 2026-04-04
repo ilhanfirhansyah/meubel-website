@@ -16,9 +16,18 @@
       rel="stylesheet"
     />
     <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/theme.css" />
+    
+    <!-- Modern Animation Libraries -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   </head>
   <body>
+    <div class="global-bg" aria-hidden="true">
+      <div class="shape s1"></div>
+      <div class="shape s2"></div>
+      <div class="shape s3"></div>
+    </div>
+
     <header class="site-header" id="home">
       <nav class="navbar" aria-label="Main navigation">
         <a class="brand" href="#home">
@@ -42,13 +51,15 @@
           <li><a href="#home">Home</a></li>
           <li><a href="#produk">Produk</a></li>
           <li><a href="#tentang">Tentang</a></li>
+          <li><a href="#proses">Proses</a></li>
           <li><a href="#galeri">Galeri</a></li>
+          <li><a href="#faq">FAQ</a></li>
           <li><a href="#kontak">Kontak</a></li>
         </ul>
 
         <a
           class="nav-cta"
-          href="https://wa.me/6281234567890"
+          href="https://wa.me/628125632260"
           target="_blank"
           rel="noopener"
         >
@@ -56,7 +67,12 @@
         </a>
       </nav>
 
-      <section class="hero">
+      <section class="hero hero--premium hero-section reveal">
+        <div class="hero__fx" aria-hidden="true">
+          <span class="hero__fx-shape hero__fx-shape--one"></span>
+          <span class="hero__fx-shape hero__fx-shape--two"></span>
+          <span class="hero__fx-grid"></span>
+        </div>
         <div class="hero__content">
           <p class="hero__badge">Workshop Furniture Profesional</p>
           <h1 class="hero__title">
@@ -69,21 +85,21 @@
           <div class="hero__actions">
             <a
               class="button button--primary"
-              href="https://wa.me/6281234567890"
+              href="https://wa.me/628125632260?text=Halo, saya ingin konsultasi tentang produk furniture. Bisa jelaskan proses dan harga?"
               target="_blank"
               rel="noopener"
             >
               Hubungi via WhatsApp
             </a>
-            <a class="button button--ghost" href="#produk">Lihat Produk</a>
+            <a class="button button--ghost" href="#produk">Lihat Produk Kami</a>
           </div>
           <div class="hero__stats">
             <div>
-              <strong>10+ Tahun</strong>
-              <span>Pengalaman</span>
+              <strong data-target="20">0</strong><span>+</span>
+              <span>Tahun</span>
             </div>
             <div>
-              <strong>1000+</strong>
+              <strong data-target="1000">0</strong><span>+</span>
               <span>Proyek</span>
             </div>
             <div>
@@ -92,12 +108,13 @@
             </div>
           </div>
         </div>
-        <div class="hero__image" role="img" aria-label="Produk furniture kayu berkualitas"></div>
+        <div class="hero__image" data-hero-parallax role="img" aria-label="Produk furniture kayu berkualitas"></div>
+        <div class="scroll-indicator" title="Scroll untuk melihat lebih banyak">↓</div>
       </section>
     </header>
 
     <main>
-      <section class="section" id="produk">
+      <section class="section products--premium produk-section reveal" id="produk">
         <div class="container">
           <div class="section__header">
             <h2>Produk &amp; Layanan</h2>
@@ -107,74 +124,133 @@
             </p>
           </div>
           <div class="grid grid--cards">
-            <article class="card">
+            <article class="card" data-index="0">
+              <span class="card-badge">Popular</span>
               <img
-                src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=600&q=80"
-                alt="Pintu kayu berkualitas"
+                src="assets/images/products/pintu1.jpeg"
+                alt="Pintu kayu berkualitas dengan desain modern dan klasik"
                 loading="lazy"
               />
               <h3>Pintu</h3>
-              <p>Pintu solid dan tahan lama dengan desain modern maupun klasik.</p>
+              <p>Pintu solid dari material Jati/Meranti, desain custom.</p>
+              <a
+                class="card__cta"
+                href="https://wa.me/628125632260?text=Halo, saya ingin konsultasi produk Pintu."
+                target="_blank"
+                rel="noopener"
+              >
+                Konsultasi
+              </a>
             </article>
-            <article class="card">
+            <article class="card" data-index="1">
               <img
-                src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=600&q=80"
-                alt="Kusen jendela kayu"
+                src="assets/images/products/kusen.jpeg"
+                alt="kusen kayu "
                 loading="lazy"
               />
               <h3>Kusen</h3>
-              <p>Kusen rapi, presisi, dan cocok untuk berbagai tipe bangunan.</p>
+              <p>Kusen presisi custom sesuai kebutuhan. Material pilihan, finishing premium.</p>
+              <a
+                class="card__cta"
+                href="https://wa.me/628125632260?text=Halo, saya ingin konsultasi produk Kusen."
+                target="_blank"
+                rel="noopener"
+              >
+                Konsultasi
+              </a>
             </article>
-            <article class="card">
+            <article class="card" data-index="2">
               <img
-                src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=600&q=80"
-                alt="Jendela kayu modern"
+                src="assets/images/products/jendela.jpeg"
+                alt="Jendela kayu dengan sirkulasi udara optimal"
                 loading="lazy"
               />
               <h3>Jendela</h3>
-              <p>Jendela kayu dengan sirkulasi optimal dan finishing halus.</p>
+              <p>Jendela kayu design grid/panel custom. Ventilasi optimal, finishing smooth.</p>
+              <a
+                class="card__cta"
+                href="https://wa.me/628125632260?text=Halo, saya ingin konsultasi produk Jendela."
+                target="_blank"
+                rel="noopener"
+              >
+                Konsultasi
+              </a>
             </article>
-            <article class="card">
+            <article class="card" data-index="3">
+              <span class="card-badge">Best Seller</span>
               <img
-                src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=600&q=80"
-                alt="Meja kayu untuk ruang makan"
+                src="assets/images/products/meja4.jpeg"
+                alt="Meja kayu elegan untuk ruang makan dan ruang kerja"
                 loading="lazy"
               />
               <h3>Meja</h3>
-              <p>Meja kerja, meja makan, hingga meja display sesuai kebutuhan.</p>
+              <p>Meja makan, kerja, display custom design. Top kayu solid atau glass</p>
+              <a
+                class="card__cta"
+                href="https://wa.me/628125632260?text=Halo, saya ingin konsultasi produk Meja."
+                target="_blank"
+                rel="noopener"
+              >
+                Konsultasi
+              </a>
             </article>
-            <article class="card">
+           <article class="card" data-index="4">
               <img
-                src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=600&q=80"
-                alt="Kursi kayu ergonomis"
+                src="assets/images/products/kursi.jpeg"
+                alt="Panel Kursi custom yang estetis dan fungsional"
                 loading="lazy"
               />
               <h3>Kursi</h3>
-              <p>Kursi ergonomis dengan kombinasi desain estetis dan kuat.</p>
+              <p>Kursi dining, kerja, cafe - custom design. Material solid, ergonomis.</p>
+              <a
+                class="card__cta"
+                href="https://wa.me/628125632260?text=Halo, saya ingin konsultasi produk Kursi."
+                target="_blank"
+                rel="noopener"
+              >
+                Konsultasi
+              </a>
             </article>
-            <article class="card">
+            <article class="card" data-index="5">
               <img
-                src="https://images.unsplash.com/photo-1481277542470-605612bd2d61?auto=format&fit=crop&w=600&q=80"
-                alt="Ventilasi kayu artistik"
+                src="assets/images/products/ventilasi.jpeg"
+                alt="Panel ventilasi kayu dengan desain artistik"
                 loading="lazy"
               />
               <h3>Ventilasi</h3>
-              <p>Ventilasi kayu artistik untuk sirkulasi udara lebih baik.</p>
+              <p>Panel ventilasi/dekorasi artistik kayu. Meningkatkan sirkulasi &amp; estetika.</p>
+              <a
+                class="card__cta"
+                href="https://wa.me/628125632260?text=Halo, saya ingin konsultasi produk Ventilasi."
+                target="_blank"
+                rel="noopener"
+              >
+                Konsultasi
+              </a>
             </article>
-            <article class="card">
+            <article class="card" data-index="6">
+              <span class="card-badge">Custom</span>
               <img
-                src="https://images.unsplash.com/photo-1501876725168-00c445821c9e?auto=format&fit=crop&w=600&q=80"
-                alt="Custom furniture"
+                src="assets/images/products/custom.jpeg"
+                alt="Custom furniture sesuai desain dan kebutuhan"
                 loading="lazy"
               />
               <h3>Custom Furniture</h3>
-              <p>Desain sesuai kebutuhan dan ukuran ruang Anda.</p>
+              <p>Desain unlimited sesuai ruang &amp; style Anda. Konsultasi gratis. Harga tergantung kompleksitas.</p>
+              <a
+                class="card__cta"
+                href="https://wa.me/628125632260?text=Halo, saya ingin konsultasi produk Custom Furniture."
+                target="_blank"
+                rel="noopener"
+              >
+                Konsultasi
+              </a>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="section section--muted" id="tentang">
+      <section class="section section--muted tentang-section reveal" id="tentang">
         <div class="container about">
           <div class="about__content">
             <h2>Tentang Kami</h2>
@@ -184,7 +260,7 @@
               teknik modern untuk menghasilkan produk yang rapi, kuat, dan estetis.
             </p>
             <p>
-              Dengan pengalaman lebih dari 10 tahun, kami dipercaya oleh pelanggan rumah
+              Dengan berpengalaman sejak tahun 1996, kami dipercaya oleh pelanggan rumah
               tinggal, ruko, hingga proyek komersial. Setiap pekerjaan kami diselesaikan tepat
               waktu dengan standar kualitas yang konsisten.
             </p>
@@ -196,68 +272,352 @@
           </div>
           <div class="about__image">
             <img
-              src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=700&q=80"
-              alt="Workshop furniture CV BINA ANEKA KARYA"
+              src="assets/images/workshop/worshop4.jpeg"
+              alt="Workshop dan tim kerja CV BINA ANEKA KARYA"
               loading="lazy"
             />
           </div>
         </div>
       </section>
 
-      <section class="section" id="galeri">
+      <section class="section gallery--premium galeri-section reveal" id="galeri">
         <div class="container">
           <div class="section__header">
             <h2>Galeri Pekerjaan</h2>
             <p>Beberapa hasil karya yang telah kami selesaikan untuk berbagai klien.</p>
           </div>
-          <div class="grid grid--gallery">
-            <figure class="gallery-item">
+          
+          <!-- Gallery Filter Buttons -->
+          <div class="gallery-filters">
+            <button class="filter-btn active" type="button" aria-pressed="true" data-filter="*">Semua</button>
+            <button class="filter-btn" type="button" aria-pressed="false" data-filter="Custom">Custom</button>
+            <button class="filter-btn" type="button" aria-pressed="false" data-filter="Jendela">Jendela</button>
+            <button class="filter-btn" type="button" aria-pressed="false" data-filter="Meja">Meja</button>
+            <button class="filter-btn" type="button" aria-pressed="false" data-filter="Lemari">Lemari</button>
+            <button class="filter-btn" type="button" aria-pressed="false" data-filter="Pintu">Pintu</button>
+            <button class="filter-btn" type="button" aria-pressed="false" data-filter="Workshop">Workshop</button>
+          </div>
+          
+          <div class="grid grid--gallery" id="gallery-grid">
+            <figure class="gallery-item" data-index="0" data-category="Custom">
               <img
-                src="https://images.unsplash.com/photo-1501045661006-fcebe0257c3f?auto=format&fit=crop&w=700&q=80"
-                alt="Interior kayu minimalis"
+                src="assets/images/gallery/custom.jpeg"
+                alt="Custom furniture dengan desain unik dan fungsional"
                 loading="lazy"
               />
             </figure>
-            <figure class="gallery-item">
+            <figure class="gallery-item" data-category="Jendela">
               <img
-                src="https://images.unsplash.com/photo-1505691723518-36a5ac3b2d03?auto=format&fit=crop&w=700&q=80"
-                alt="Rak kayu modern"
+                src="assets/images/gallery/jendela2.jpeg"
+                alt="Jendela kayu lengkap dengan kusen frame"
                 loading="lazy"
               />
             </figure>
-            <figure class="gallery-item">
+            <figure class="gallery-item" data-category="Meja">
               <img
-                src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=700&q=80"
-                alt="Meja makan custom"
+                src="assets/images/gallery/meja 5.jpeg"
+                alt="Meja premium dengan desain artistik"
                 loading="lazy"
               />
             </figure>
-            <figure class="gallery-item">
+            <figure class="gallery-item" data-category="Lemari">
               <img
-                src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=700&q=80"
-                alt="Kusen dan jendela kayu"
+                src="assets/images/gallery/meja tumpuk.jpeg"
+                alt="Lemari multi-fungsi atau rak dengan desain kompleks"
                 loading="lazy"
               />
             </figure>
-            <figure class="gallery-item">
+            <figure class="gallery-item" data-category="Meja">
               <img
-                src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=700&q=80"
-                alt="Kursi kayu cafe"
+                src="assets/images/gallery/meja1.jpeg"
+                alt="Workshop dan proses produksi furniture profesional"
                 loading="lazy"
               />
             </figure>
-            <figure class="gallery-item">
+            <figure class="gallery-item" data-category="Meja">
               <img
-                src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=700&q=80"
-                alt="Proses produksi furniture"
+                src="assets/images/gallery/meja2.jpeg"
+                alt="Detail finishing kayu dengan craftsmanship tinggi"
                 loading="lazy"
               />
             </figure>
+             <figure class="gallery-item" data-category="Meja">
+              <img
+                src="assets/images/gallery/meja3.jpeg"
+                alt="Workshop dan proses produksi furniture profesional"
+                loading="lazy"
+              />
+            </figure>
+             <figure class="gallery-item" data-category="Pintu">
+              <img
+                src="assets/images/gallery/pintu 5.jpeg"
+                alt="Workshop dan proses produksi furniture profesional"
+                loading="lazy"
+              />
+            </figure>
+             <figure class="gallery-item" data-category="Pintu">
+              <img
+                src="assets/images/gallery/pintu 10.jpeg"
+                alt="Workshop dan proses produksi furniture profesional"
+                loading="lazy"
+              />
+            </figure>
+             <figure class="gallery-item" data-category="Pintu">
+              <img
+                src="assets/images/gallery/pintu 12.jpeg"
+                alt="Workshop dan proses produksi furniture profesional"
+                loading="lazy"
+              />
+            </figure>
+             <figure class="gallery-item" data-category="Pintu">
+              <img
+                src="assets/images/gallery/pintu2.jpeg"
+                alt="Workshop dan proses produksi furniture profesional"
+                loading="lazy"
+              />
+            </figure>
+             <figure class="gallery-item" data-category="Pintu">
+              <img
+                src="assets/images/gallery/pintu3.jpeg"
+                alt="Workshop dan proses produksi furniture profesional"
+                loading="lazy"
+              />
+            </figure>
+             <figure class="gallery-item" data-category="Pintu">
+              <img
+                src="assets/images/gallery/pintu4.jpeg"
+                alt="Workshop dan proses produksi furniture profesional"
+                loading="lazy"
+              />
+            </figure>
+             <figure class="gallery-item" data-category="Pintu">
+              <img
+                src="assets/images/gallery/pintu6.jpeg"
+                alt="Workshop dan proses produksi furniture profesional"
+                loading="lazy"
+              />
+            </figure>
+             <figure class="gallery-item" data-category="Pintu">
+              <img
+                src="assets/images/gallery/pintu7.jpeg"
+                alt="Workshop dan proses produksi furniture profesional"
+                loading="lazy"
+              />
+            </figure>
+             <figure class="gallery-item" data-category="Pintu">
+              <img
+                src="assets/images/gallery/pintu8.jpeg"
+                alt="Workshop dan proses produksi furniture profesional"
+                loading="lazy"
+              />
+            </figure>
+             <figure class="gallery-item" data-category="Pintu">
+              <img
+                src="assets/images/gallery/pintu9.jpeg"
+                alt="Workshop dan proses produksi furniture profesional"
+                loading="lazy"
+              />
+            </figure>
+             <figure class="gallery-item" data-category="Pintu">
+              <img
+                src="assets/images/gallery/PINTU.jpeg"
+                alt="Workshop dan proses produksi furniture profesional"
+                loading="lazy"
+              />
+            </figure>
+             <figure class="gallery-item" data-category="Workshop">
+              <img
+                src="assets/images/gallery/workshop.jpeg"
+                alt="Workshop dan proses produksi furniture profesional"
+                loading="lazy"
+              />
+            </figure>
+             <figure class="gallery-item" data-category="Workshop">
+              <img
+                src="assets/images/gallery/workshop3.jpeg"
+                alt="Workshop dan proses produksi furniture profesional"
+                loading="lazy"
+              />
+            </figure>
+
           </div>
         </div>
       </section>
 
-      <section class="section section--cta">
+      <section class="section proses-section reveal" id="proses">
+        <div class="container">
+          <div class="section__header">
+            <h2>Proses Pemesanan</h2>
+            <p>Langkah mudah dan transparan dari konsultasi hingga serah terima produk.</p>
+          </div>
+          <div class="process-timeline">
+            <div class="process-step" data-index="0">
+              <div class="process-step__number">1</div>
+              <h3>Konsultasi &amp; Desain</h3>
+              <p>Diskusikan kebutuhan, ukuran, dan desain furniture impian Anda. Tim kami siap memberikan rekomendasi terbaik.</p>
+            </div>
+            <div class="process-step" data-index="1">
+              <div class="process-step__number">2</div>
+              <h3>Persetujuan &amp; DP</h3>
+              <p>Setujui desain final dan lakukan pembayaran DP. Kami akan mulai persiapan material dan produksi.</p>
+            </div>
+            <div class="process-step" data-index="2">
+              <div class="process-step__number">3</div>
+              <h3>Produksi</h3>
+              <p>Proses pengerjaan berlangsung 2-4 minggu tergantung kompleksitas. Update progress bisa Anda pantau.</p>
+            </div>
+            <div class="process-step" data-index="3">
+              <div class="process-step__number">4</div>
+              <h3>Serah Terima</h3>
+              <p>Produk dikirim/dipasang dan dilakukan quality check final.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section testimoni-section reveal" id="testimoni">
+        <div class="container">
+          <div class="section__header">
+            <h2>Testimoni Pelanggan</h2>
+            <p>Kepuasan pelanggan adalah prioritas utama kami. Lihat apa kata mereka tentang produk kami.</p>
+          </div>
+          
+          <!-- Swiper Testimonials Carousel -->
+          <div class="swiper testimonials-swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="testimonial-card" data-index="0">
+                  <div class="testimonial-header">
+                    <div class="testimonial-avatar">RS</div>
+                    <div>
+                      <h4>Rudi Santoso</h4>
+                      <p class="testimonial-project">Renovasi Rumah Tinggal</p>
+                    </div>
+                  </div>
+                  <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                  <p class="testimonial-text">&quot;Sangat puas dengan hasil pekerjaan. Pengrajin profesional, detail-oriented, dan selesai tepat waktu. Material berkualitas tinggi!&quot;</p>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="testimonial-card" data-index="1">
+                  <div class="testimonial-header">
+                    <div class="testimonial-avatar">SN</div>
+                    <div>
+                      <h4>Siti Nurhaliza</h4>
+                      <p class="testimonial-project">Custom Lemari &amp; Rak</p>
+                    </div>
+                  </div>
+                  <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                  <p class="testimonial-text">&quot;Desain sesuai dengan bayangan saya. Tim sangat responsif dan menjelaskan setiap detail prosesnya. Highly recommended!&quot;</p>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="testimonial-card" data-index="2">
+                  <div class="testimonial-header">
+                    <div class="testimonial-avatar">AW</div>
+                    <div>
+                      <h4>Ahmad Wijaya</h4>
+                      <p class="testimonial-project">Pintu &amp; Kusen Rumah Baru</p>
+                    </div>
+                  </div>
+                  <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                  <p class="testimonial-text">&quot;Kualitas finishing sempurna, rapi banget. Harga kompetitif dan tidak ada biaya tersembunyi. Saya rekomendasikan ke teman-teman.&quot;</p>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="testimonial-card" data-index="3">
+                  <div class="testimonial-header">
+                    <div class="testimonial-avatar">DH</div>
+                    <div>
+                      <h4>Dewi Handoyo</h4>
+                      <p class="testimonial-project">Meja Makan Custom</p>
+                    </div>
+                  </div>
+                  <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                  <p class="testimonial-text">&quot;Proses konsultasi sangat membantu. Saya bisa custom sesuai ruangan saya. Hasilnya lebih bagus dari ekspektasi!&quot;</p>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="testimonial-card" data-index="4">
+                  <div class="testimonial-header">
+                    <div class="testimonial-avatar">BP</div>
+                    <div>
+                      <h4>Budi Prasetyo</h4>
+                      <p class="testimonial-project">Proyek Ruko Komersial</p>
+                    </div>
+                  </div>
+                  <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+                  <p class="testimonial-text">&quot;Untuk proyek skala besar, CV Bina Aneka Karya adalah pilihan tepat. Profesional, tepat waktu, dan hasil memuaskan.&quot;</p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Swiper Pagination & Navigation -->
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--muted faq-section reveal" id="faq">
+        <div class="container">
+          <div class="section__header">
+            <h2>Pertanyaan Umum (FAQ)</h2>
+            <p>Temukan jawaban atas pertanyaan yang sering diajukan pelanggan kami.</p>
+          </div>
+          <div class="faq-list">
+            <div class="faq-item">
+              <button class="faq-toggle" aria-expanded="false">
+                <span>Berapa lama waktu produksi furniture custom?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-content">
+                <p>Untuk produk standard, waktu produksi 2-4 minggu. Untuk custom design yang kompleks, bisa lebih lama tergantung detail. Kami akan inform timeline pasti setelah konsultasi desain.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-toggle" aria-expanded="false">
+                <span>Bagaimana sistem pembayaran?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-content">
+                <p>Kami menggunakan sistem pembayaran bertahap: 40% DP saat konfirmasi order, 40% saat produksi 50% selesai, dan 20% saat serah terima. Bisa via transfer bank atau e-wallet.</p>
+              </div>
+            </div>
+           
+            <div class="faq-item">
+              <button class="faq-toggle" aria-expanded="false">
+                <span>Bisa custom ukuran berapa maksimal?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-content">
+                <p>Bisa custom sesuai kebutuhan Anda, mulai dari ukuran kecil hingga besar. Kami punya pengalaman menangani proyek dari ruang kecil hingga komersial. Konsultasi gratis untuk menentukan ukuran optimal.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-toggle" aria-expanded="false">
+                <span>Apa saja pilihan material dan finishing?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-content">
+                <p>Material: Meranti. Finishing: Natural, Doff, Glossy, atau warna custom sesuai permintaan. Semua material pilihan dan finishing premium untuk hasil terbaik.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-toggle" aria-expanded="false">
+                <span>Bagaimana kalau ada revisi desain?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-content">
+                <p>Revisi desain gratis sebelum produksi dimulai. Kami memberikan 2-3 kali revisi agar Anda benar-benar puas dengan desain final sebelum produksi dimulai.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--cta cta-section reveal">
         <div class="container cta">
           <div>
             <h2>Siap Wujudkan Furniture Impian Anda?</h2>
@@ -268,7 +628,7 @@
           </div>
           <a
             class="button button--primary"
-            href="https://wa.me/6281234567890"
+            href="https://wa.me/628125632260?text=Halo, saya tertarik dengan produk furniture Anda. Saya ingin berkonsultasi untuk kebutuhan saya."
             target="_blank"
             rel="noopener"
           >
@@ -277,7 +637,7 @@
         </div>
       </section>
 
-      <section class="section" id="kontak">
+      <section class="section kontak-section reveal" id="kontak">
         <div class="container contact">
           <div class="contact__info">
             <h2>Kontak Kami</h2>
@@ -287,13 +647,13 @@
             </p>
             <div class="contact__item">
               <span>WhatsApp</span>
-              <a href="https://wa.me/6281234567890" target="_blank" rel="noopener">
-                +62 812-3456-7890
+              <a href="https://wa.me/628125632260" target="_blank" rel="noopener">
+                +62 812-5632-260
               </a>
             </div>
             <div class="contact__item">
               <span>Alamat</span>
-              <p>Jl. Contoh Alamat No. 123, Kota Anda, Indonesia</p>
+              <p>Jl. P. Anom Gg. Bersama No 18 Kabupaten Sambas, Kalimantan Barat  </p>
             </div>
             <div class="contact__item">
               <span>Jam Operasional</span>
@@ -304,8 +664,7 @@
             <iframe
               title="Google Maps"
               loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126920.02091852708!2d106.7382815!3d-6.1714789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5f3fd9989c9%3A0x3a9cebb0dc4a67e4!2sJakarta!5e0!3m2!1sid!2sid!4v1700000000000"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d997.1733722878669!2d109.3034405261278!3d1.3605513867954937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31e4bbd0b55adfc9%3A0xf62ebaa83df5a8a5!2sCV.%20BINA%20ANEKA%20KARYA!5e0!3m2!1sid!2sid!4v1775124304032!5m2!1sid!2sid"
               allowfullscreen=""
             ></iframe>
           </div>
@@ -313,7 +672,7 @@
       </section>
     </main>
 
-    <footer class="footer">
+    <footer class="footer footer-section reveal">
       <div class="container footer__content">
         <div>
           <h3>CV BINA ANEKA KARYA</h3>
@@ -321,8 +680,10 @@
         </div>
         <div>
           <h4>Kontak</h4>
-          <p>WhatsApp: +62 812-3456-7890</p>
-          <p>Email: info@binaanekakarya.com</p>
+          <p>WhatsApp: <a href="https://wa.me/628125632260">+62 812-5632-260</a></p>
+          <p>Email: binaanekakarya@gmail.com</p>
+        </div>
+        <div>
         </div>
       </div>
       <div class="footer__bottom">
@@ -330,6 +691,21 @@
       </div>
     </footer>
 
+    <!-- Swiper - Carousel Library -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Motion Background Module -->
+    <script src="js/animation.js"></script>
+
+    <!-- Custom Script (LOAD LAST after all libraries) -->
     <script src="js/script.js"></script>
+
+    <!-- Gallery Lightbox -->
+    <div class="gallery-lightbox" id="gallery-lightbox">
+      <div class="gallery-lightbox__content">
+        <img src="" alt="Gallery preview" class="gallery-lightbox__img" id="lightbox-img" />
+        <button class="gallery-lightbox__close" aria-label="Close gallery">×</button>
+      </div>
+    </div>
   </body>
 </html>
