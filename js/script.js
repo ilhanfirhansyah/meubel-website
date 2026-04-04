@@ -113,13 +113,30 @@
   const initGalleryFilter = () => {
     const buttons = doc.querySelectorAll(".filter-btn");
     const items = doc.querySelectorAll("#gallery-grid .gallery-item");
-    if (!buttons.length || !items.length) return;
+    const galleryGrid = doc.getElementById("gallery-grid");
+    if (!buttons.length || !items.length || !galleryGrid) return;
 
     const apply = (filter) => {
+      let visibleCount = 0;
+      let visibleItem = null;
+
       items.forEach((item) => {
         const category = item.getAttribute("data-category") || "";
-        item.classList.toggle("is-hidden", filter !== "*" && category !== filter);
+        const isHidden = filter !== "*" && category !== filter;
+        item.classList.toggle("is-hidden", isHidden);
+        item.classList.remove("gallery-item--single");
+
+        if (!isHidden) {
+          visibleCount += 1;
+          visibleItem = item;
+        }
       });
+
+      const isSingle = visibleCount === 1;
+      galleryGrid.classList.toggle("gallery-grid--single", isSingle);
+      if (isSingle && visibleItem) {
+        visibleItem.classList.add("gallery-item--single");
+      }
     };
 
     buttons.forEach((button) => {

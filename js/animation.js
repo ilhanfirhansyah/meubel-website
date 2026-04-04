@@ -8,7 +8,7 @@
   const heroImage = doc.querySelector("[data-hero-parallax]");
 
   const revealTargets = doc.querySelectorAll(
-    ".section__header, .card, .about__content, .about__image, .process-step, .testimonial-card, .faq-item, .cta > *, .contact__info, .contact__map, .footer__content > *"
+    ".section__header, .card, .service-area-list li, .about__content, .about__image, .process-step, .testimonial-card, .faq-item, .cta > *, .contact__info, .contact__map, .footer__content > *"
   );
 
   const setHeroStagger = () => {
