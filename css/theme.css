@@ -930,8 +930,10 @@ main,
   display: grid;
   gap: clamp(22px, 4vw, 56px);
   align-items: center;
-  min-height: min(100vh, 850px);
-  padding: clamp(30px, 6vw, 80px) 4% clamp(46px, 7vw, 92px);
+  align-content: center;
+  min-height: min(calc(100vh - 76px), 840px);
+  min-height: min(calc(100svh - 76px), 840px);
+  padding: clamp(22px, 3.8vw, 54px) 4% clamp(52px, 7.2vw, 98px);
 }
 
 .hero__fx {
