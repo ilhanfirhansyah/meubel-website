@@ -944,9 +944,8 @@ main,
 .hero__fx-shape {
   position: absolute;
   border-radius: 999px;
-  filter: blur(34px);
-  opacity: 0.24;
-  will-change: transform;
+  filter: blur(20px);
+  opacity: 0.18;
 }
 
 .hero__fx-shape--one {
@@ -1046,15 +1045,14 @@ main,
   overflow: hidden;
   border-radius: 22px;
   border: 1px solid rgba(107, 79, 59, 0.24);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-sm);
   background: url("../assets/images/workshop/WALLPAPER2.jpeg") center/cover no-repeat;
-  transform: translate3d(0, var(--hero-parallax, 0px), 0) scale(1.03);
-  transition: transform 620ms cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 280ms ease;
-  will-change: transform;
+  transform: translate3d(0, var(--hero-parallax, 0px), 0) scale(1.01);
+  transition: transform 420ms cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 220ms ease;
 }
 
 .hero__image:hover {
-  transform: translate3d(0, calc(var(--hero-parallax, 0px) - 4px), 0) scale(1.04);
+  transform: translate3d(0, calc(var(--hero-parallax, 0px) - 2px), 0) scale(1.015);
 }
 
 .hero__image::after {
@@ -1113,8 +1111,8 @@ main,
 /* Motion classes */
 .hero-reveal {
   opacity: 0;
-  transform: translate3d(0, 24px, 0) scale(0.99);
-  transition: opacity 640ms ease, transform 640ms ease;
+  transform: translate3d(0, 18px, 0) scale(0.995);
+  transition: opacity 420ms ease, transform 420ms ease;
   transition-delay: var(--hero-delay, 0ms);
 }
 
@@ -1123,62 +1121,27 @@ main,
   transform: translate3d(0, 0, 0) scale(1);
 }
 
-.hero.hero--generating .hero__title,
-.hero.hero--generating .hero__subtitle,
-.hero.hero--generating .hero__actions .button {
-  text-shadow: 0 0 10px rgba(217, 160, 102, 0.14);
-}
-
-.hero .hero-text-cinematic {
-  opacity: 1;
-}
-
-.hero .hero__actions .button.hero-text-cinematic {
-  gap: 0.36em;
-}
-
-.hero .hero-text-cinematic .hero-word {
-  display: inline-block;
-  opacity: 0;
-  transform: translate3d(0, 14px, 0);
-  filter: blur(2px);
-  animation: cinemaWordIn var(--word-duration, 760ms) cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
-  animation-delay: var(--word-delay, 0ms);
-}
-
-.hero.hero--generating .hero__actions .button {
-  animation: cinematicButtonPulse 2.8s ease-in-out infinite;
-}
-
-.hero.hero--generating .hero__image {
-  filter: saturate(0.82) contrast(1.04) brightness(0.94);
-}
-
-.hero.hero--generating .hero__image::after {
-  opacity: 0.72;
-  animation: heroScan 2.2s ease-in-out infinite;
-}
-
 .hero.hero--generated .hero__image {
-  animation: heroImageSettle 680ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
-}
-
-.hero.hero--generated .hero__actions .button {
-  animation: none;
+  animation: heroImageSettle 420ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
 }
 
 .hero-reveal.hero__image {
-  transform: translate3d(0, 28px, 0) scale(1.05);
+  transform: translate3d(0, 20px, 0) scale(1.02);
 }
 
 .hero.is-loaded .hero-reveal.hero__image {
-  transform: translate3d(0, var(--hero-parallax, 0px), 0) scale(1.03);
+  transform: translate3d(0, var(--hero-parallax, 0px), 0) scale(1.01);
+}
+
+.hero--light-motion .hero__fx-shape,
+.hero--light-motion .scroll-indicator {
+  animation-duration: 22s;
 }
 
 .reveal-item {
   opacity: 0;
-  transform: translate3d(0, 30px, 0);
-  transition: opacity 720ms cubic-bezier(0.22, 0.61, 0.36, 1), transform 720ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  transform: translate3d(0, 24px, 0);
+  transition: opacity 560ms cubic-bezier(0.22, 0.61, 0.36, 1), transform 560ms cubic-bezier(0.22, 0.61, 0.36, 1);
   transition-delay: var(--reveal-delay, 0ms);
 }
 
@@ -1274,6 +1237,16 @@ main,
     padding-bottom: 44px;
   }
 
+  .hero__fx-shape {
+    filter: blur(10px);
+    opacity: 0.1;
+    animation: none;
+  }
+
+  .hero__fx-shape--two {
+    display: none;
+  }
+
   .hero__actions {
     display: grid;
     grid-template-columns: 1fr;
@@ -1297,6 +1270,13 @@ main,
 
   .hero__stats > div:nth-child(3) {
     grid-column: 1 / -1;
+  }
+
+  .hero__image {
+    min-height: clamp(240px, 58vw, 340px);
+    box-shadow: var(--shadow-xs);
+    transform: translate3d(0, 0, 0) scale(1);
+    transition-duration: 260ms;
   }
 
   .global-bg .s3,
@@ -1333,6 +1313,12 @@ main,
   .whatsapp-float svg {
     width: 27px;
     height: 27px;
+  }
+}
+
+@media (min-width: 769px) {
+  .hero__image {
+    will-change: transform;
   }
 }
 

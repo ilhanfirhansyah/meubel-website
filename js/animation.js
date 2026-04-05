@@ -3,6 +3,10 @@
   const win = window;
   const isMobile = win.matchMedia("(max-width: 768px)").matches;
   const prefersReducedMotion = win.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const deviceMemory = Number(win.navigator.deviceMemory || 0);
+  const cpuCores = Number(win.navigator.hardwareConcurrency || 0);
+  const isLowPowerDevice = (deviceMemory && deviceMemory <= 4) || (cpuCores && cpuCores <= 4);
+  const shouldUseLightHeroMotion = prefersReducedMotion || isMobile || isLowPowerDevice;
 
   const hero = doc.querySelector(".hero");
   const heroImage = doc.querySelector("[data-hero-parallax]");
@@ -23,112 +27,34 @@
       ".hero__image"
     ];
 
+    const baseDelay = shouldUseLightHeroMotion ? 90 : 180;
+
     sequence.forEach((selector, index) => {
       const el = hero.querySelector(selector);
       if (!el) return;
       el.classList.add("hero-reveal");
-      el.style.setProperty("--hero-delay", `${index * 180}ms`);
+      el.style.setProperty("--hero-delay", `${index * baseDelay}ms`);
     });
 
-    requestAnimationFrame(() => hero.classList.add("is-loaded"));
-  };
-
-  const revealWordsCinematic = (el, options = {}) => {
-    if (!el || el.dataset.cinematicDone === "true") return 0;
-
-    const finalText = (el.dataset.finalText || el.textContent || "").trim();
-    if (!finalText) return 0;
-
-    const delay = options.delay ?? 0;
-    const duration = options.duration ?? 760;
-    const step = options.step ?? 84;
-    const lockWidth = options.lockWidth ?? false;
-
-    el.dataset.finalText = finalText;
-    el.dataset.cinematicDone = "true";
-
-    if (lockWidth) {
-      const width = el.getBoundingClientRect().width;
-      el.style.minWidth = `${Math.ceil(width)}px`;
-    }
-
-    const tokens = finalText.split(/(\s+)/);
-    const fragment = doc.createDocumentFragment();
-    let wordIndex = 0;
-
-    el.classList.add("hero-text-cinematic");
-    el.setAttribute("aria-label", finalText);
-    el.textContent = "";
-
-    tokens.forEach((token) => {
-      if (!token) return;
-
-      if (/^\s+$/.test(token)) {
-        fragment.append(doc.createTextNode(token));
-        return;
+    requestAnimationFrame(() => {
+      hero.classList.add("is-loaded");
+      if (shouldUseLightHeroMotion) {
+        hero.classList.add("hero--light-motion");
       }
-
-      const span = doc.createElement("span");
-      span.className = "hero-word";
-      span.textContent = token;
-      span.style.setProperty("--word-delay", `${delay + wordIndex * step}ms`);
-      span.style.setProperty("--word-duration", `${duration}ms`);
-      fragment.append(span);
-      wordIndex += 1;
     });
-
-    el.append(fragment);
-
-    return delay + Math.max(wordIndex - 1, 0) * step + duration;
   };
 
-  const setHeroGenerateSequence = () => {
+  const setHeroSecondaryReveal = () => {
     if (!hero || prefersReducedMotion) return;
 
-    const title = hero.querySelector(".hero__title");
-    const subtitle = hero.querySelector(".hero__subtitle");
-    const buttons = Array.from(hero.querySelectorAll(".hero__actions .button"));
-
-    hero.classList.add("hero--generating");
-
-    const endTimes = [];
-    endTimes.push(
-      revealWordsCinematic(title, {
-        delay: 160,
-        duration: 820,
-        step: 92
-      })
-    );
-
-    endTimes.push(
-      revealWordsCinematic(subtitle, {
-        delay: 560,
-        duration: 740,
-        step: 72
-      })
-    );
-
-    buttons.forEach((button, index) => {
-      endTimes.push(
-        revealWordsCinematic(button, {
-          delay: 980 + index * 180,
-          duration: 680,
-          step: 78,
-          lockWidth: true
-        })
-      );
-    });
-
-    const totalDuration = Math.max(0, ...endTimes);
-
+    const delay = shouldUseLightHeroMotion ? 220 : 420;
     win.setTimeout(() => {
-      hero.classList.remove("hero--generating");
       hero.classList.add("hero--generated");
 
       win.setTimeout(() => {
         hero.classList.remove("hero--generated");
-      }, 900);
-    }, totalDuration + 150);
+      }, 500);
+    }, delay);
   };
 
   const setRevealObserver = () => {
@@ -218,7 +144,7 @@
 
   const boot = () => {
     setHeroStagger();
-    setHeroGenerateSequence();
+    setHeroSecondaryReveal();
     setRevealObserver();
     setHeroParallax();
     setBackgroundPointer();

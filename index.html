@@ -18,10 +18,23 @@
       rel="stylesheet"
     />
     <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
+    <link
+      rel="preload"
+      as="image"
+      href="assets/images/workshop/WALLPAPER2.jpeg"
+    />
     <link rel="stylesheet" href="css/theme.css" />
     
     <!-- Modern Animation Libraries -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    </noscript>
   </head>
   <body>
 
@@ -707,13 +720,13 @@
     </footer>
 
     <!-- Swiper - Carousel Library -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <!-- Motion Background Module -->
-    <script src="js/animation.js"></script>
+    <script defer src="js/animation.js"></script>
 
     <!-- Custom Script (LOAD LAST after all libraries) -->
-    <script src="js/script.js"></script>
+    <script defer src="js/script.js"></script>
 
     <!-- Gallery Lightbox -->
     <div class="gallery-lightbox" id="gallery-lightbox">
