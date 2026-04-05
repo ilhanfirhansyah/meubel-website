@@ -10,10 +10,47 @@
 
   const hero = doc.querySelector(".hero");
   const heroImage = doc.querySelector("[data-hero-parallax]");
+  const heroTitle = doc.querySelector(".hero__title");
 
   const revealTargets = doc.querySelectorAll(
     ".section__header, .card, .service-area-list li, .about__content, .about__image, .process-step, .testimonial-card, .faq-item, .cta > *, .contact__info, .contact__map, .footer__content > *"
   );
+
+  const initHeroTitleGeneration = () => {
+    if (!heroTitle) return;
+
+    if (prefersReducedMotion || shouldUseLightHeroMotion) {
+      hero?.classList.add("hero--no-title-split");
+      return;
+    }
+
+    const rawText = (heroTitle.textContent || "").replace(/\s+/g, " ").trim();
+    if (!rawText) return;
+
+    const words = rawText.split(" ");
+    if (words.length <= 1) {
+      hero?.classList.add("hero--no-title-split");
+      return;
+    }
+
+    const fragment = doc.createDocumentFragment();
+    words.forEach((word, index) => {
+      const span = doc.createElement("span");
+      span.className = "hero__title-word";
+      span.style.setProperty("--word-delay", `${index * 55}ms`);
+      span.textContent = word;
+      fragment.appendChild(span);
+
+      if (index < words.length - 1) {
+        fragment.appendChild(doc.createTextNode(" "));
+      }
+    });
+
+    heroTitle.textContent = "";
+    heroTitle.setAttribute("aria-label", rawText);
+    heroTitle.appendChild(fragment);
+    heroTitle.classList.add("hero__title--generated");
+  };
 
   const setHeroStagger = () => {
     if (!hero) return;
@@ -21,13 +58,14 @@
     const sequence = [
       ".hero__badge",
       ".hero__title",
+      ".hero__processing-line",
       ".hero__subtitle",
-      ".hero__actions",
       ".hero__stats",
-      ".hero__image"
+      ".hero__image",
+      ".hero__actions"
     ];
 
-    const baseDelay = shouldUseLightHeroMotion ? 90 : 180;
+    const baseDelay = shouldUseLightHeroMotion ? 90 : 130;
 
     sequence.forEach((selector, index) => {
       const el = hero.querySelector(selector);
@@ -47,7 +85,7 @@
   const setHeroSecondaryReveal = () => {
     if (!hero || prefersReducedMotion) return;
 
-    const delay = shouldUseLightHeroMotion ? 220 : 420;
+    const delay = shouldUseLightHeroMotion ? 160 : 300;
     win.setTimeout(() => {
       hero.classList.add("hero--generated");
 
@@ -143,6 +181,7 @@
   };
 
   const boot = () => {
+    initHeroTitleGeneration();
     setHeroStagger();
     setHeroSecondaryReveal();
     setRevealObserver();

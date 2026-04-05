@@ -939,6 +939,13 @@ main,
   inset: 0;
   z-index: 0;
   pointer-events: none;
+  opacity: 0.66;
+  transition: opacity 420ms ease;
+  will-change: opacity;
+}
+
+.hero.is-loaded .hero__fx {
+  opacity: 1;
 }
 
 .hero__fx-shape {
@@ -1002,6 +1009,61 @@ main,
   font-size: clamp(1.9rem, 3.6vw, 3.25rem);
   margin-bottom: 14px;
   max-width: 14ch;
+}
+
+.hero__title-word {
+  display: inline-block;
+}
+
+.hero__title--generated .hero__title-word {
+  opacity: 0;
+  transform: translate3d(0, 10px, 0);
+  transition: opacity 320ms ease, transform 320ms ease;
+  transition-delay: calc(var(--word-delay, 0ms) + 120ms);
+  will-change: transform, opacity;
+}
+
+.hero.is-loaded .hero__title--generated .hero__title-word {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.hero__processing-line {
+  position: relative;
+  display: block;
+  width: min(240px, 48vw);
+  height: 2px;
+  margin: 2px 0 16px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(107, 79, 59, 0.26), rgba(217, 160, 102, 0.38), rgba(107, 79, 59, 0.22));
+  opacity: 0;
+  transform: translate3d(0, 8px, 0) scaleX(0.24);
+  transform-origin: left center;
+  transition: transform 360ms ease, opacity 360ms ease;
+  transition-delay: calc(var(--hero-delay, 0ms) + 120ms);
+  overflow: hidden;
+  will-change: transform, opacity;
+}
+
+.hero__processing-line::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 34%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.72), transparent);
+  transform: translate3d(-140%, 0, 0);
+}
+
+.hero.is-loaded .hero__processing-line {
+  opacity: 0.96;
+  transform: translate3d(0, 0, 0) scaleX(1);
+}
+
+.hero.is-loaded .hero__processing-line::after {
+  animation: processSweep 1800ms linear infinite;
 }
 
 .hero__subtitle {
@@ -1129,6 +1191,14 @@ main,
   transform: translate3d(0, 20px, 0) scale(1.02);
 }
 
+.hero-reveal.hero__actions {
+  transform: translate3d(0, 24px, 0) scale(0.965);
+}
+
+.hero.is-loaded .hero-reveal.hero__actions {
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
 .hero.is-loaded .hero-reveal.hero__image {
   transform: translate3d(0, var(--hero-parallax, 0px), 0) scale(1.01);
 }
@@ -1136,6 +1206,15 @@ main,
 .hero--light-motion .hero__fx-shape,
 .hero--light-motion .scroll-indicator {
   animation-duration: 22s;
+}
+
+.hero--light-motion .hero__fx {
+  opacity: 0.86;
+}
+
+.hero--light-motion .hero__fx-shape {
+  filter: none;
+  opacity: 0.12;
 }
 
 .reveal-item {
@@ -1174,6 +1253,10 @@ main,
 @media (max-width: 900px) {
   .hero {
     text-align: center;
+  }
+
+  .hero__processing-line {
+    margin-inline: auto;
   }
 
   .hero__actions {
@@ -1365,6 +1448,15 @@ main,
   }
   50% {
     transform: translate3d(10px, -16px, 0);
+  }
+}
+
+@keyframes processSweep {
+  0% {
+    transform: translate3d(-140%, 0, 0);
+  }
+  100% {
+    transform: translate3d(360%, 0, 0);
   }
 }
 
